@@ -1,4 +1,4 @@
-# four
+# VuetifyTestProject
 
 ## Project setup
 ```
