@@ -7,8 +7,8 @@
         <v-flex xs12 sm6 md4 lg2 v-for="person in team" :key="person.name.first">
           <v-card flat class="text-center ma-3">
             <v-responsive class="pt-4">
-              <v-avatar>
-                <img :src="person.picture.thumbnail" alt="picture" />
+              <v-avatar size="100">
+                <img :src="person.picture.large" alt="picture" />
               </v-avatar>
             </v-responsive>
             <v-card-text>
@@ -49,7 +49,7 @@ export default {
   name: "team",
   methods: {
     async getUsers() {
-      const res = await fetch("https://randomuser.me/api/?results=10");
+      const res = await fetch("https://randomuser.me/api/?results=10&nat=DE");
       let Users = await res.json();
       return Users.results;
     },
