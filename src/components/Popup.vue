@@ -13,7 +13,7 @@
         <span class="headline">Add Project</span>
       </v-card-title>
       <v-card-text>
-        <v-container>
+        <v-container ref="form">
           <v-row>
             <v-col cols="12">
               <v-text-field
@@ -22,10 +22,11 @@
                 v-model="title"
                 prepend-icon="mdi-folder"
                 hint="Give a unique name to your project"
+                :rules="inputRules"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-textarea label="Information" prepend-icon="mdi-pencil" v-model="content"></v-textarea>
+              <v-textarea label="Information" prepend-icon="mdi-pencil" v-model="content" :rules="inputRules"></v-textarea>
             </v-col>
             <v-col cols="6">
               <v-menu min-width="auto">
@@ -38,6 +39,7 @@
                     readonly
                     v-on="on"
                     @click:clear="date = null"
+                    :rules="inputRules"
                   ></v-text-field>
                 </template>
                 <v-date-picker v-model="date"></v-date-picker>
@@ -69,6 +71,7 @@ export default {
     title: "",
     content: "",
     date: format(parseISO(new Date().toISOString()), "yyyy-MM-dd"),
+    inputRules: [(v) => v.length >= 5 || "Minimum length is 5 characters"],
   }),
   props: {
     btn_description: String,
@@ -76,8 +79,10 @@ export default {
   },
   methods: {
     submit() {
-      this.dialog = false;
-      console.log(this.title + "/" + this.content);
+      if (this.$refs.form.validate()) {
+        console.log(this.title + "/" + this.content);
+        this.dialog = false;
+      }
     },
   },
   computed: {
