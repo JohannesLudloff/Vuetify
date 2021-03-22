@@ -1,23 +1,29 @@
 <template>
-  <v-app class="">
-    <Navbar />
-    <v-main class="grey lighten-4 px-4 ">
-      <router-view />
-    </v-main>
-  </v-app>
+	<v-app class="">
+		<Navbar />
+		<v-main class="grey lighten-4 px-4 ">
+			<router-view />
+		</v-main>
+	</v-app>
 </template>
 
 <script>
 import Navbar from "./components/Navbar";
 export default {
-  name: "App",
+	name: "App",
 
-  components: {
-    Navbar,
-  },
+	components: {
+		Navbar,
+	},
 
-  data: () => ({
-    //
-  }),
+	data: () => ({
+		//
+	}),
 };
 </script>
+
+<style>
+html {
+	overflow: hidden;
+}
+</style>
