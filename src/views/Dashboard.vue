@@ -12,7 +12,7 @@
           <span class="caption text-lowercase">By person</span>
         </v-btn>
         <v-spacer></v-spacer>
-        <Popup icon="mdi-plus-box" />
+        <Popup btn_icon="mdi-plus-box" />
       </v-layout>
       <v-card flat class="pa-3" v-for="project in projects" :key="project.title">
         <v-row :class="`project ${project.status}`">
