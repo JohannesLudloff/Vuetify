@@ -65,6 +65,7 @@
 <script>
 import moment from "moment";
 import { format, parseISO } from "date-fns";
+
 export default {
 	data: () => ({
 		dialog: false,
@@ -84,11 +85,12 @@ export default {
 					// ! care ! not creating an id here in this object, this will only work with json server as it creates the id for itself
 					title: this.title,
 					content: this.content,
-					due: this.due,
+					due: this.date,
 					person: "Me",
 					status: "ongoing",
 				};
 				// save data here
+
 				const options = {
 					method: "POST",
 					headers: {
